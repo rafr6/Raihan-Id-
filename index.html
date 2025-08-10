@@ -2,204 +2,213 @@
 <html lang="bn">
 <head>
 <meta charset="utf-8" />
-<meta name="viewport" content="width=device-width,initial-scale=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>ID Card Replica</title>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
 <style>
-  :root{
-    --card-w:420px;
-    --card-h:250px;
-    --orange1:#f36f21;
-    --orange2:#fdbb2d;
-    --bg:#ffffff;
-    --text:#111;
-    --muted:#555;
-  }
-  *{box-sizing:border-box; margin:0; padding:0;}
-  body{
-    background:#f4f4f4;
-    min-height:100vh;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    font-family:'Inter', sans-serif;
-  }
-  .card{
-    width:var(--card-w);
-    height:var(--card-h);
-    background:var(--bg);
-    border-radius:10px;
-    box-shadow:0 6px 20px rgba(0,0,0,0.1);
-    overflow:hidden;
-    display:flex;
-    flex-direction:column;
-    border:1px solid #ddd;
-  }
-  /* Header */
-  .header{
-    height:70px;
-    background:linear-gradient(90deg,var(--orange1),var(--orange2));
-    display:flex;
-    align-items:center;
-    padding:0 15px;
-    color:#fff;
-  }
-  .logo{
-    width:70px;
-    height:50px;
-    background:rgba(255,255,255,0.15);
-    border-radius:5px;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    overflow:hidden;
-    margin-right:10px;
-  }
-  .logo img{
-    width:100%;
-    height:100%;
-    object-fit:contain;
-  }
-  .company-name{
-    font-size:20px;
-    font-weight:700;
-    letter-spacing:0.5px;
-  }
-  /* Body */
-  .body{
-    flex:1;
-    display:flex;
-    padding:12px 15px;
-  }
-  .left-info{
-    flex:1;
-    display:flex;
-    flex-direction:column;
-    justify-content:flex-start;
-  }
-  .name{
-    font-size:20px;
-    font-weight:700;
-    margin-bottom:4px;
-  }
-  .role{
-    font-size:13px;
-    color:var(--muted);
-    margin-bottom:10px;
-  }
-  .info-row{
-    display:flex;
-    font-size:13px;
-    margin-bottom:4px;
-  }
-  .label{
-    width:90px;
-    font-weight:600;
-    color:#333;
-  }
-  .value{
-    flex:1;
-    font-weight:500;
-    color:var(--text);
-  }
-  /* QR Code Section */
-  .qr-section{
-    width:100px;
-    display:flex;
-    flex-direction:column;
-    align-items:center;
-    justify-content:center;
-  }
-  .photo{
-    width:80px;
-    height:80px;
-    border-radius:8px;
-    overflow:hidden;
-    margin-bottom:8px;
-    border:2px solid #fff;
-    box-shadow:0 4px 8px rgba(0,0,0,0.08);
-  }
-  .photo img{
-    width:100%;
-    height:100%;
-    object-fit:cover;
-  }
-  .qr{
-    width:80px;
-    height:80px;
-    border:1px solid #ccc;
-    padding:5px;
-    border-radius:6px;
-    background:#fff;
-  }
-  .qr img{
-    width:100%;
-    height:100%;
-    object-fit:contain;
-  }
-  /* Footer */
-  .footer{
-    height:40px;
-    display:flex;
-    align-items:center;
-    justify-content:flex-end;
-    padding:0 20px;
-  }
-  .sig{
-    text-align:center;
-  }
-  .sig-line{
-    width:100px;
-    height:1px;
-    background:#333;
-    margin-bottom:4px;
-  }
-  .sig-text{
-    font-size:12px;
-    font-weight:600;
-  }
+:root{
+  --card-w:420px;
+  --card-h:250px;
+  --primary:#e85a00;
+  --secondary:#ff9a3d;
+  --text:#111;
+  --muted:#555;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{
+  background:#f2f4f7;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  min-height:100vh;
+  font-family:'Inter',sans-serif;
+}
+
+/* Card container */
+.card{
+  width:var(--card-w);
+  height:var(--card-h);
+  background:#fff;
+  border-radius:10px;
+  overflow:hidden;
+  box-shadow:0 8px 25px rgba(0,0,0,0.1);
+  border:1px solid #ddd;
+  display:flex;
+  flex-direction:column;
+}
+
+/* Header */
+.card-header{
+  position:relative;
+  height:70px;
+  background:linear-gradient(90deg,var(--primary),var(--secondary));
+  display:flex;
+  align-items:center;
+  padding:0 15px;
+}
+.card-header::after{
+  content:"";
+  position:absolute;
+  right:-50px;
+  top:-30px;
+  width:150px;
+  height:120px;
+  background:rgba(255,255,255,0.15);
+  transform:rotate(15deg);
+  border-radius:6px;
+}
+.logo{
+  width:70px;
+  height:50px;
+  background:#fff3;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  border-radius:5px;
+  overflow:hidden;
+}
+.logo img{width:100%;height:100%;object-fit:contain;}
+.header-title{
+  color:#fff;
+  font-weight:700;
+  font-size:20px;
+  margin-left:12px;
+}
+
+/* Body */
+.card-body{
+  flex:1;
+  display:flex;
+  padding:12px 15px;
+}
+
+/* Left photo */
+.photo{
+  width:90px;
+  height:90px;
+  border-radius:8px;
+  border:3px solid #fff;
+  box-shadow:0 4px 12px rgba(0,0,0,0.1);
+  overflow:hidden;
+  flex-shrink:0;
+}
+.photo img{width:100%;height:100%;object-fit:cover;}
+
+/* Middle info */
+.info{
+  flex:1;
+  padding:0 10px;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+}
+.name{
+  font-size:18px;
+  font-weight:700;
+  color:var(--text);
+}
+.role{
+  font-size:13px;
+  color:var(--muted);
+  margin-top:3px;
+}
+
+/* Right QR */
+.qr-block{
+  width:80px;
+  text-align:center;
+}
+.qr{
+  width:70px;
+  height:70px;
+  border:1px solid #ddd;
+  padding:4px;
+  border-radius:5px;
+  overflow:hidden;
+  margin:0 auto;
+}
+.qr img{width:100%;height:100%;object-fit:contain;}
+.qr-caption{
+  font-size:11px;
+  color:var(--muted);
+  margin-top:5px;
+}
+
+/* Bottom details */
+.card-footer{
+  border-top:1px solid #eee;
+  display:flex;
+  padding:8px 15px;
+  font-size:12px;
+}
+.col{
+  flex:1;
+}
+.row{
+  display:flex;
+  justify-content:space-between;
+  margin-bottom:4px;
+}
+.label{
+  font-weight:600;
+  color:#333;
+}
+.value{
+  font-weight:600;
+  color:var(--text);
+}
+.sig-col{
+  width:120px;
+  text-align:center;
+}
+.sig-line{
+  height:1px;
+  background:rgba(0,0,0,0.2);
+  margin:6px 0;
+}
+.sig-text{
+  font-size:12px;
+  font-weight:600;
+  color:var(--text);
+}
 </style>
 </head>
 <body>
+
 <div class="card">
-  <!-- Header -->
-  <div class="header">
-    <div class="logo">
-      <img src="img/company-logo.png" alt="Company Logo">
-    </div>
-    <div class="company-name">COMPANY LOGO</div>
+  <div class="card-header">
+    <div class="logo"><img src="img/company-logo.png" alt="Logo"></div>
+    <div class="header-title">কোম্পানির নাম</div>
   </div>
-  
-  <!-- Body -->
-  <div class="body">
-    <div class="left-info">
-      <div class="name">Marie Doe</div>
-      <div class="role">Creative Manager</div>
-      <div class="info-row"><div class="label">ID No:</div><div class="value">00000000</div></div>
-      <div class="info-row"><div class="label">D.O.B:</div><div class="value">DD/MM/YYYY</div></div>
-      <div class="info-row"><div class="label">Joined:</div><div class="value">DD/MM/YYYY</div></div>
-      <div class="info-row"><div class="label">Expire:</div><div class="value">DD/MM/YYYY</div></div>
-      <div class="info-row"><div class="label">Web:</div><div class="value">your@email.com</div></div>
-      <div class="info-row"><div class="label">Phone:</div><div class="value">000-000-000</div></div>
+
+  <div class="card-body">
+    <div class="photo"><img src="img/photo.jpg" alt="Profile"></div>
+    <div class="info">
+      <div class="name">নাম এখানে</div>
+      <div class="role">পদবি এখানে</div>
     </div>
-    
-    <div class="qr-section">
-      <div class="photo">
-        <img src="img/photo.jpg" alt="Profile Photo">
-      </div>
-      <div class="qr">
-        <img src="img/qr.png" alt="QR Code">
-      </div>
+    <div class="qr-block">
+      <div class="qr"><img src="img/qr.png" alt="QR"></div>
+      <div class="qr-caption">Signature</div>
     </div>
   </div>
-  
-  <!-- Footer -->
-  <div class="footer">
-    <div class="sig">
+
+  <div class="card-footer">
+    <div class="col">
+      <div class="row"><div class="label">ID No</div><div class="value">12345678</div></div>
+      <div class="row"><div class="label">D.O.B</div><div class="value">01/01/1990</div></div>
+      <div class="row"><div class="label">Join Date</div><div class="value">01/06/2020</div></div>
+    </div>
+    <div class="col">
+      <div class="row"><div class="label">Email</div><div class="value">example@mail.com</div></div>
+      <div class="row"><div class="label">Phone</div><div class="value">0123456789</div></div>
+    </div>
+    <div class="sig-col">
       <div class="sig-line"></div>
-      <div class="sig-text">Yours Sincerely</div>
+      <div class="sig-text">Authorised Sign</div>
     </div>
   </div>
 </div>
+
 </body>
 </html>
