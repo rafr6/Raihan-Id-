@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>ID Card — নমুনা</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --card-w: 360px;   /* কার্ড বিস্তা: এখানে পরিবর্তন কর */
+    --card-h: 220px;
+    --accent1: #ef6c00;
+    --accent2: #ff9800;
+    --text-dark:#222;
+    --muted:#666;
+  }
+  body{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    min-height:100vh;
+    background:#f3f4f6;
+    font-family: 'Poppins', sans-serif;
+    padding:20px;
+  }
+
+  .id-card{
+    width:var(--card-w);
+    height:var(--card-h);
+    background:#fff;
+    border-radius:10px;
+    box-shadow:0 8px 30px rgba(0,0,0,0.12);
+    overflow:hidden;
+    position:relative;
+    border:1px solid rgba(0,0,0,0.06);
+  }
+
+  /* header band with angled shapes */
+  .card-header{
+    height:68px;
+    background: linear-gradient(90deg,var(--accent1), var(--accent2));
+    position:relative;
+    padding:10px 14px;
+    display:flex;
+    align-items:center;
+    gap:10px;
+  }
+  /* decorative angled shapes */
+  .card-header::before,
+  .card-header::after{
+    content:"";
+    position:absolute;
+    right:-40px;
+    top:-20px;
+    width:120px;
+    height:100px;
+    transform:skewX(-18deg);
+    opacity:0.15;
+    background:#fff;
+  }
+  .company-logo{
+    width:62px;
+    height:44px;
+    background:rgba(255,255,255,0.12);
+    border-radius:6px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    flex-shrink:0;
+    overflow:hidden;
+  }
+  .company-logo img{ width:100%; height:100%; object-fit:contain; }
+
+  .header-title{
+    color:#fff;
+    font-weight:700;
+    font-size:16px;
+    margin-left:6px;
+    letter-spacing:0.3px;
+  }
+
+  /* main body */
+  .card-body{
+    display:flex;
+    padding:12px;
+    gap:12px;
+  }
+
+  .left-photo{
+    width:72px;
+    min-width:72px;
+    height:72px;
+    border-radius:8px;
+    overflow:hidden;
+    background:#efefef;
+    border:3px solid #fff;
+    box-shadow:0 2px 6px rgba(0,0,0,0.06);
+  }
+  .left-photo img{ width:100%; height:100%; object-fit:cover; display:block;}
+
+  .main-info{
+    flex:1;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    gap:4px;
+  }
+  .name{
+    font-size:18px;
+    color:var(--text-dark);
+    font-weight:600;
+    line-height:1;
+  }
+  .role{
+    font-size:12px;
+    color:var(--muted);
+    margin-top:2px;
+  }
+
+  .qr-block{
+    width:78px;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:flex-start;
+    gap:6px;
+  }
+  .qr-block img{ width:72px; height:72px; object-fit:contain; background:#fff; padding:6px; border-radius:6px; border:1px solid #eee; }
+
+  /* bottom info area */
+  .card-footer{
+    padding:10px 14px;
+    display:flex;
+    gap:12px;
+    border-top:1px dashed rgba(0,0,0,0.04);
+    align-items:flex-start;
+  }
+
+  .info-col{
+    flex:1;
+    display:flex;
+    flex-direction:column;
+    gap:6px;
+    font-size:12px;
+    color:var(--muted);
+  }
+  .info-row{
+    display:flex;
+    justify-content:space-between;
+    gap:8px;
+    color:var(--muted);
+  }
+  .label{ font-weight:600; color:#444; font-size:11px; min-width:72px; }
+  .value{ text-align:right; color:var(--text-dark); font-weight:500; font-size:12px; min-width:90px; }
+
+  /* signature area small */
+  .signature{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:6px;
+    font-size:11px;
+    color:var(--muted);
+  }
+  .sig-line{
+    width:100px;
+    height:1px;
+    background:rgba(0,0,0,0.12);
+  }
+
+  /* responsive smaller screens */
+  @media (max-width:420px){
+    :root{ --card-w: 320px; --card-h: 220px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="id-card" role="region" aria-label="ID Card">
+  <div class="card-header">
+    <div class="company-logo">
+      <!-- company logo -->
+      <img src="img/company-logo.png" alt="Company Logo">
+    </div>
+    <div style="flex:1">
+      <div class="header-title">COMPANY LOGO</div>
+    </div>
+    <!-- optional small decorative text -->
+  </div>
+
+  <div class="card-body">
+    <div class="left-photo">
+      <img src="img/photo.jpg" alt="Photo">
+    </div>
+
+    <div class="main-info">
+      <div class="name">Marie Doe</div>
+      <div class="role">Creative Manager</div>
+    </div>
+
+    <div class="qr-block">
+      <img src="img/qr.png" alt="QR code">
+      <div style="font-size:11px;color:var(--muted);text-align:center">Your Signature</div>
+    </div>
+  </div>
+
+  <div class="card-footer">
+    <div class="info-col">
+      <div class="info-row"><div class="label">ID No</div><div class="value">00000000</div></div>
+      <div class="info-row"><div class="label">D.O.B</div><div class="value">DD/MM/YYYY</div></div>
+      <div class="info-row"><div class="label">Joined Date</div><div class="value">DD/MM/YYYY</div></div>
+    </div>
+
+    <div class="info-col">
+      <div class="info-row"><div class="label">Web</div><div class="value">your mail goes here</div></div>
+      <div class="info-row"><div class="label">Phone</div><div class="value">000-000-00</div></div>
+      <div style="display:flex; align-items:center; justify-content:center; flex-direction:column;">
+        <div class="signature">
+          <div class="sig-line"></div>
+          <div style="color:var(--text-dark); font-weight:600;">Yours Sincerely</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Simple notes for editing -->
+<!--
+  ** পরিবর্তন করার নির্দেশ **
+  - লোগো: img/company-logo.png প্রতিস্থাপন করুন
+  - ছবি: img/photo.jpg প্রতিস্থাপন করুন
+  - কিউআর: img/qr.png প্রতিস্থাপন করুন
+  - নাম/পদবি/ডিটেইলস HTML-এ সরাসরি বদলান
+  - কার্ড আকার বদলাতে: :root এ --card-w এবং --card-h পরিবর্তন করুন
+-->
+
+</body>
+</html>
