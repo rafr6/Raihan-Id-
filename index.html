@@ -1,211 +1,198 @@
 <!DOCTYPE html>
-<html lang="bn">
+<html lang="en">
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>ID Card Replica</title>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
 <style>
-:root{
-  --card-w:420px;
-  --card-h:250px;
-  --primary:#e85a00;
-  --secondary:#ff9a3d;
-  --text:#111;
-  --muted:#555;
-}
-*{box-sizing:border-box;margin:0;padding:0}
-body{
-  background:#f2f4f7;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  min-height:100vh;
-  font-family:'Inter',sans-serif;
-}
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
 
-/* Card container */
-.card{
-  width:var(--card-w);
-  height:var(--card-h);
-  background:#fff;
-  border-radius:10px;
-  overflow:hidden;
-  box-shadow:0 8px 25px rgba(0,0,0,0.1);
-  border:1px solid #ddd;
-  display:flex;
-  flex-direction:column;
-}
+  body {
+    background: #f4f4f4;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    font-family: 'Inter', sans-serif;
+  }
 
-/* Header */
-.card-header{
-  position:relative;
-  height:70px;
-  background:linear-gradient(90deg,var(--primary),var(--secondary));
-  display:flex;
-  align-items:center;
-  padding:0 15px;
-}
-.card-header::after{
-  content:"";
-  position:absolute;
-  right:-50px;
-  top:-30px;
-  width:150px;
-  height:120px;
-  background:rgba(255,255,255,0.15);
-  transform:rotate(15deg);
-  border-radius:6px;
-}
-.logo{
-  width:70px;
-  height:50px;
-  background:#fff3;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  border-radius:5px;
-  overflow:hidden;
-}
-.logo img{width:100%;height:100%;object-fit:contain;}
-.header-title{
-  color:#fff;
-  font-weight:700;
-  font-size:20px;
-  margin-left:12px;
-}
+  .id-card {
+    width: 420px;
+    height: 250px;
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+    overflow: hidden;
+    border: 1px solid #ddd;
+    display: flex;
+    flex-direction: column;
+  }
 
-/* Body */
-.card-body{
-  flex:1;
-  display:flex;
-  padding:12px 15px;
-}
+  /* Header */
+  .header {
+    background: linear-gradient(90deg, #e85a00, #ff9a3d);
+    padding: 10px 15px;
+    display: flex;
+    align-items: center;
+    position: relative;
+  }
 
-/* Left photo */
-.photo{
-  width:90px;
-  height:90px;
-  border-radius:8px;
-  border:3px solid #fff;
-  box-shadow:0 4px 12px rgba(0,0,0,0.1);
-  overflow:hidden;
-  flex-shrink:0;
-}
-.photo img{width:100%;height:100%;object-fit:cover;}
+  .header img {
+    height: 50px;
+    margin-right: 12px;
+  }
 
-/* Middle info */
-.info{
-  flex:1;
-  padding:0 10px;
-  display:flex;
-  flex-direction:column;
-  justify-content:center;
-}
-.name{
-  font-size:18px;
-  font-weight:700;
-  color:var(--text);
-}
-.role{
-  font-size:13px;
-  color:var(--muted);
-  margin-top:3px;
-}
+  .header h1 {
+    color: white;
+    font-size: 20px;
+    font-weight: 700;
+    margin: 0;
+  }
 
-/* Right QR */
-.qr-block{
-  width:80px;
-  text-align:center;
-}
-.qr{
-  width:70px;
-  height:70px;
-  border:1px solid #ddd;
-  padding:4px;
-  border-radius:5px;
-  overflow:hidden;
-  margin:0 auto;
-}
-.qr img{width:100%;height:100%;object-fit:contain;}
-.qr-caption{
-  font-size:11px;
-  color:var(--muted);
-  margin-top:5px;
-}
+  /* Body */
+  .body {
+    flex: 1;
+    display: flex;
+    padding: 12px 16px;
+    gap: 12px;
+  }
 
-/* Bottom details */
-.card-footer{
-  border-top:1px solid #eee;
-  display:flex;
-  padding:8px 15px;
-  font-size:12px;
-}
-.col{
-  flex:1;
-}
-.row{
-  display:flex;
-  justify-content:space-between;
-  margin-bottom:4px;
-}
-.label{
-  font-weight:600;
-  color:#333;
-}
-.value{
-  font-weight:600;
-  color:var(--text);
-}
-.sig-col{
-  width:120px;
-  text-align:center;
-}
-.sig-line{
-  height:1px;
-  background:rgba(0,0,0,0.2);
-  margin:6px 0;
-}
-.sig-text{
-  font-size:12px;
-  font-weight:600;
-  color:var(--text);
-}
+  .photo {
+    width: 90px;
+    height: 110px;
+    border-radius: 8px;
+    overflow: hidden;
+    border: 2px solid #ddd;
+  }
+
+  .photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .name {
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 4px;
+  }
+
+  .role {
+    font-size: 14px;
+    color: #555;
+    margin-bottom: 10px;
+  }
+
+  .details {
+    font-size: 13px;
+    color: #333;
+    line-height: 1.4;
+  }
+
+  .qr-section {
+    width: 90px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .qr {
+    width: 70px;
+    height: 70px;
+    border: 1px solid #ccc;
+    padding: 5px;
+    background: white;
+    border-radius: 6px;
+    margin-bottom: 4px;
+  }
+
+  .qr img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+
+  .qr-caption {
+    font-size: 11px;
+    color: #666;
+    text-align: center;
+  }
+
+  /* Footer */
+  .footer {
+    padding: 8px 16px;
+    display: flex;
+    justify-content: space-between;
+    border-top: 1px solid #eee;
+    font-size: 12px;
+  }
+
+  .footer div {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  .label {
+    font-weight: 600;
+    color: #333;
+  }
+
+  .value {
+    color: #555;
+  }
 </style>
 </head>
 <body>
 
-<div class="card">
-  <div class="card-header">
-    <div class="logo"><img src="img/company-logo.png" alt="Logo"></div>
-    <div class="header-title">কোম্পানির নাম</div>
+<div class="id-card">
+  <!-- Header -->
+  <div class="header">
+    <img src="logo.png" alt="Company Logo">
+    <h1>Company Name</h1>
   </div>
 
-  <div class="card-body">
-    <div class="photo"><img src="img/photo.jpg" alt="Profile"></div>
+  <!-- Body -->
+  <div class="body">
+    <div class="photo">
+      <img src="photo.jpg" alt="Profile Photo">
+    </div>
     <div class="info">
-      <div class="name">নাম এখানে</div>
-      <div class="role">পদবি এখানে</div>
+      <div class="name">John Doe</div>
+      <div class="role">Software Engineer</div>
+      <div class="details">
+        ID No: 12345678<br>
+        D.O.B: 01/01/1990<br>
+        Join Date: 15/03/2020<br>
+        Phone: +123-456-7890<br>
+        Email: johndoe@example.com
+      </div>
     </div>
-    <div class="qr-block">
-      <div class="qr"><img src="img/qr.png" alt="QR"></div>
-      <div class="qr-caption">Signature</div>
+    <div class="qr-section">
+      <div class="qr">
+        <img src="qr.png" alt="QR Code">
+      </div>
+      <div class="qr-caption">Scan Me</div>
     </div>
   </div>
 
-  <div class="card-footer">
-    <div class="col">
-      <div class="row"><div class="label">ID No</div><div class="value">12345678</div></div>
-      <div class="row"><div class="label">D.O.B</div><div class="value">01/01/1990</div></div>
-      <div class="row"><div class="label">Join Date</div><div class="value">01/06/2020</div></div>
+  <!-- Footer -->
+  <div class="footer">
+    <div>
+      <span class="label">Address</span>
+      <span class="value">123, Street Name</span>
     </div>
-    <div class="col">
-      <div class="row"><div class="label">Email</div><div class="value">example@mail.com</div></div>
-      <div class="row"><div class="label">Phone</div><div class="value">0123456789</div></div>
-    </div>
-    <div class="sig-col">
-      <div class="sig-line"></div>
-      <div class="sig-text">Authorised Sign</div>
+    <div>
+      <span class="label">Signature</span>
+      <span class="value">___________</span>
     </div>
   </div>
 </div>
