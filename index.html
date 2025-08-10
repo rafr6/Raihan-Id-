@@ -3,29 +3,28 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>ID Card — Exact Replica</title>
+<title>ID Card Replica</title>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
 <style>
   :root{
-    --w:480px;  /* কার্ড প্রস্থ */
-    --h:300px;  /* কার্ড উচ্চতা */
+    --w:420px;
+    --h:250px;
     --orange1:#e85a00;
     --orange2:#ff9a3d;
     --bg:#ffffff;
     --text:#111;
     --muted:#5f6a76;
   }
-  *{box-sizing:border-box}
+  *{box-sizing:border-box;margin:0;padding:0}
   body{
     min-height:100vh;
     display:flex;
     align-items:center;
     justify-content:center;
     background:#f2f4f7;
-    font-family:Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+    font-family:Inter, sans-serif;
     padding:20px;
   }
-
   .card{
     width:var(--w);
     height:var(--h);
@@ -35,13 +34,14 @@
     overflow:hidden;
     border:1px solid rgba(0,0,0,0.06);
     position:relative;
+    display:flex;
+    flex-direction:column;
   }
-
-  /* top angled header */
+  /* top header */
   .header{
     height:76px;
     background: linear-gradient(90deg,var(--orange1), var(--orange2));
-    padding:12px 16px;
+    padding:10px 16px;
     display:flex;
     align-items:center;
     gap:12px;
@@ -50,17 +50,17 @@
   .header::after{
     content:"";
     position:absolute;
-    right:-80px;
-    top:-40px;
-    width:180px;
-    height:140px;
-    transform:rotate(16deg);
-    background:rgba(255,255,255,0.12);
-    border-radius:6px;
+    right:-50px;
+    top:-30px;
+    width:140px;
+    height:120px;
+    transform:rotate(20deg);
+    background:rgba(255,255,255,0.15);
+    border-radius:8px;
   }
   .logo{
-    width:84px;
-    height:54px;
+    width:80px;
+    height:50px;
     background:rgba(255,255,255,0.12);
     border-radius:6px;
     display:flex;
@@ -69,204 +69,160 @@
     overflow:hidden;
     flex-shrink:0;
   }
-  .logo img{ width:100%; height:100%; object-fit:contain; display:block; }
-
+  .logo img{ width:100%; height:100%; object-fit:contain; }
   .header-text{
     color:#fff;
     font-weight:700;
     font-size:20px;
-    letter-spacing:0.2px;
+    letter-spacing:0.5px;
   }
 
   /* body */
   .body{
+    flex:1;
     display:flex;
     padding:14px 16px;
     gap:12px;
-    align-items:flex-start;
   }
-
   .photo{
-    width:92px;
-    height:92px;
+    width:90px;
+    height:90px;
     border-radius:8px;
     overflow:hidden;
-    border:4px solid #fff;
-    background:#f0f0f0;
+    border:3px solid #fff;
     box-shadow:0 6px 16px rgba(16,24,40,0.06);
     flex-shrink:0;
+    background:#eee;
   }
-  .photo img{ width:100%; height:100%; object-fit:cover; display:block; }
-
+  .photo img{ width:100%; height:100%; object-fit:cover; }
   .center-info{
     flex:1;
     display:flex;
     flex-direction:column;
     justify-content:center;
-    gap:4px;
   }
   .name{
-    font-size:20px;
+    font-size:19px;
     color:var(--text);
     font-weight:700;
-    line-height:1;
   }
   .role{
-    font-size:12.5px;
+    font-size:13px;
     color:var(--muted);
     margin-top:2px;
   }
-
   .right-qr{
-    width:92px;
+    width:80px;
     display:flex;
     flex-direction:column;
     align-items:center;
-    gap:8px;
   }
   .qr{
-    width:78px;
-    height:78px;
+    width:70px;
+    height:70px;
     background:#fff;
-    padding:6px;
+    padding:5px;
     border-radius:6px;
-    border:1px solid #eee;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    overflow:hidden;
+    border:1px solid #ddd;
   }
-  .qr img{ width:100%; height:100%; object-fit:contain; display:block; }
-
-  .qr-caption{ font-size:11px; color:var(--muted); text-align:center; }
+  .qr img{ width:100%; height:100%; object-fit:contain; }
+  .qr-caption{
+    font-size:11px;
+    color:var(--muted);
+    margin-top:4px;
+    text-align:center;
+  }
 
   /* bottom section */
   .bottom{
     display:flex;
     gap:12px;
     padding:10px 16px;
-    border-top:1px solid rgba(16,24,40,0.04);
-    align-items:flex-start;
+    border-top:1px solid rgba(16,24,40,0.08);
+    font-size:12px;
   }
-
   .col{
     flex:1;
     display:flex;
     flex-direction:column;
-    gap:6px;
-    font-size:12px;
-    color:var(--muted);
+    gap:5px;
   }
   .row{
     display:flex;
     justify-content:space-between;
-    align-items:center;
-    gap:8px;
   }
   .label{
     color:#333;
     font-weight:600;
-    font-size:12px;
-    min-width:88px;
+    min-width:80px;
   }
   .value{
     color:var(--text);
     font-weight:600;
     text-align:right;
-    font-size:13px;
-    min-width:110px;
   }
-
-  /* signature column */
   .sig-col{
-    width:140px;
+    width:120px;
     display:flex;
     flex-direction:column;
     align-items:center;
-    gap:8px;
-  }
-  .sig-box{
-    width:120px;
-    height:34px;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    border-radius:4px;
-    background:transparent;
+    justify-content:flex-end;
   }
   .sig-line{
-    width:100px;
+    width:90px;
     height:1px;
-    background:rgba(0,0,0,0.16);
+    background:rgba(0,0,0,0.2);
+    margin-bottom:4px;
   }
-  .sig-text{ font-size:12px; color:var(--text); font-weight:600; }
-
-  /* smaller screen tweak */
-  @media (max-width:460px){
-    :root{ --w:360px; --h:260px; }
-    .label{ min-width:72px }
-    .value{ min-width:80px; font-size:12px }
+  .sig-text{
+    font-size:11px;
+    font-weight:600;
+    color:var(--text);
   }
 </style>
 </head>
 <body>
 
-<div class="card" role="region" aria-label="ID Card">
+<div class="card">
   <div class="header">
     <div class="logo">
-      <!-- Replace with your company logo -->
       <img src="img/company-logo.png" alt="Company Logo">
     </div>
-    <div style="flex:1">
-      <div class="header-text">COMPANY LOGO</div>
-    </div>
+    <div class="header-text">COMPANY NAME</div>
   </div>
 
   <div class="body">
     <div class="photo">
-      <!-- Replace with cardholder photo -->
       <img src="img/photo.jpg" alt="Photo">
     </div>
-
     <div class="center-info">
       <div class="name">Marie Doe</div>
       <div class="role">Creative Manager</div>
     </div>
-
     <div class="right-qr">
       <div class="qr">
-        <!-- Replace with qr image -->
         <img src="img/qr.png" alt="QR">
       </div>
-      <div class="qr-caption">Your Signature</div>
+      <div class="qr-caption">Scan Me</div>
     </div>
   </div>
 
   <div class="bottom">
     <div class="col">
-      <div class="row"><div class="label">ID No</div><div class="value">00000000</div></div>
-      <div class="row"><div class="label">D.O.B</div><div class="value">DD/MM/YYYY</div></div>
-      <div class="row"><div class="label">Joined Date</div><div class="value">DD/MM/YYYY</div></div>
+      <div class="row"><div class="label">ID No</div><div class="value">12345678</div></div>
+      <div class="row"><div class="label">D.O.B</div><div class="value">12/05/1990</div></div>
+      <div class="row"><div class="label">Joined</div><div class="value">01/01/2020</div></div>
     </div>
-
     <div class="col">
-      <div class="row"><div class="label">Web</div><div class="value">your mail goes here</div></div>
-      <div class="row"><div class="label">Phone</div><div class="value">000-000-000</div></div>
-      <div style="height:34px"></div>
+      <div class="row"><div class="label">Email</div><div class="value">email@example.com</div></div>
+      <div class="row"><div class="label">Phone</div><div class="value">+880-123456789</div></div>
     </div>
-
     <div class="sig-col">
-      <div class="sig-box">
-        <div class="sig-line"></div>
-      </div>
-      <div class="sig-text">Yours Sincerely</div>
+      <div class="sig-line"></div>
+      <div class="sig-text">Signature</div>
     </div>
   </div>
 </div>
 
-<!-- Usage:
- - Replace img/company-logo.png, img/photo.jpg, img/qr.png with your files.
- - Edit text (name, id, phone etc.) directly in HTML.
- - If আপনি চান আমি আপনার আপলোড করা ছবিগুলো দিয়ে final কোড বানিয়ে দিই, ছবি/লোগো এখানে শেয়ার করুন। -->
 </body>
 </html>
