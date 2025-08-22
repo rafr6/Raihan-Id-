@@ -12,6 +12,8 @@
       padding: 20px;
       display: flex;
       justify-content: center;
+      align-items: center;  /* উল্লম্বভাবে সেন্টার */
+      height: 100vh;        /* পুরো স্ক্রিনে */
     }
 
     .card {
@@ -128,6 +130,12 @@
     }
 
     @media print {
+      body {
+        display: flex;
+        justify-content: center;
+        align-items: center;  /* প্রিন্টে মাঝখানে */
+        height: 100vh;
+      }
       #downloadBtn {
         display: none;
       }
@@ -184,7 +192,7 @@
         filename: 'id-card.pdf',
         image: { type: 'jpeg', quality: 1 },
         html2canvas: { scale: 4 },
-        jsPDF: { unit: 'in', format: [3.5, 6.5], orientation: 'portrait' }, 
+        jsPDF: { unit: 'in', format: 'a4', orientation: 'portrait' }, 
         pagebreak: { mode: ['avoid-all'] }
       };
 
